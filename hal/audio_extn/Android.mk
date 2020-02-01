@@ -1,6 +1,8 @@
 PRIMARY_HAL_PATH := $(call project-path-for,qcom-audio)/hal
 AUDIO_KERNEL_INC := $(TARGET_OUT_INTERMEDIATES)/vendor/qcom/opensource/audio-kernel/include
 
+ifneq ($(strip $(TARGET_PROVIDES_AUDIO_EXTNS)),true)
+
 #--------------------------------------------
 #          Build SND_MONITOR LIB
 #--------------------------------------------
@@ -1142,6 +1144,7 @@ ifneq ($(filter kona lahaina holi,$(TARGET_BOARD_PLATFORM)),)
 LOCAL_SANITIZE := integer_overflow
 endif
 include $(BUILD_SHARED_LIBRARY)
+
 endif
 #-------------------------------------------
 
@@ -1180,4 +1183,6 @@ ifeq ($(strip $(AUDIO_FEATURE_ENABLED_DAEMON_SUPPORT)),true)
 endif
 
 include $(BUILD_SHARED_LIBRARY)
+
+endif
 endif
