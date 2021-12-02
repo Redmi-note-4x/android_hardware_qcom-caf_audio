@@ -1,11 +1,5 @@
-#AudioHal-primaryHal-Hal path
-ifneq ($(BOARD_OPENSOURCE_DIR), )
-  PRIMARY_HAL_PATH := $(BOARD_OPENSOURCE_DIR)/audio-hal/primary-hal/hal
-  AUDIO_KERNEL_INC := $(TARGET_OUT_INTERMEDIATES)/$(BOARD_OPENSOURCE_DIR)/audio-kernel/include
-else
-  PRIMARY_HAL_PATH := vendor/qcom/opensource/audio-hal/primary-hal/hal
-  AUDIO_KERNEL_INC := $(TARGET_OUT_INTERMEDIATES)/vendor/qcom/opensource/audio-kernel/include
-endif # BOARD_OPENSOURCE_DIR
+PRIMARY_HAL_PATH := $(call project-path-for,qcom-audio)/hal
+AUDIO_KERNEL_INC := $(TARGET_OUT_INTERMEDIATES)/vendor/qcom/opensource/audio-kernel/include
 
 #--------------------------------------------
 #          Build SND_MONITOR LIB
